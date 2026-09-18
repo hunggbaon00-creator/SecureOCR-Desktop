@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from PySide6.QtCore import QObject, QThread, QTimer, Signal, Slot
+from PySide6.QtCore import QObject, Qt, QThread, QTimer, Signal, Slot
 from PySide6.QtGui import QCloseEvent
 from PySide6.QtWidgets import (
     QButtonGroup,
+    QFrame,
     QHBoxLayout,
     QLabel,
     QMainWindow,
@@ -76,16 +77,38 @@ class MainWindow(QMainWindow):
 
         sidebar = QWidget()
         sidebar.setObjectName("sidebar")
-        sidebar.setFixedWidth(190)
+        sidebar.setFixedWidth(204)
         side_layout = QVBoxLayout(sidebar)
-        side_layout.setContentsMargins(16, 22, 16, 18)
-        brand = QLabel("SecureOCR\nDesktop")
+        side_layout.setContentsMargins(16, 18, 16, 18)
+
+        brand_panel = QFrame()
+        brand_panel.setObjectName("brandPanel")
+        brand_layout = QHBoxLayout(brand_panel)
+        brand_layout.setContentsMargins(10, 10, 10, 10)
+        brand_layout.setSpacing(10)
+        brand_mark = QLabel("SO")
+        brand_mark.setObjectName("brandMark")
+        brand_mark.setFixedSize(42, 42)
+        brand_mark.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        brand = QLabel(
+            '<span style="color:#FFFFFF;">Secure</span>'
+            '<span style="color:#63B3FF;">OCR</span><br>'
+            '<span style="color:#A8C7E6; font-size:10px; letter-spacing:1px;">DESKTOP</span>'
+        )
         brand.setObjectName("brand")
-        side_layout.addWidget(brand)
-        subtitle = QLabel("本地文档处理工作台")
+        brand_layout.addWidget(brand_mark)
+        brand_layout.addWidget(brand, 1)
+        side_layout.addWidget(brand_panel)
+
+        subtitle = QLabel("安全 · 本地 · 可复核")
         subtitle.setObjectName("sidebarMuted")
+        subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
         side_layout.addWidget(subtitle)
-        side_layout.addSpacing(24)
+        divider = QFrame()
+        divider.setObjectName("sidebarDivider")
+        divider.setFrameShape(QFrame.Shape.HLine)
+        side_layout.addWidget(divider)
+        side_layout.addSpacing(8)
 
         self.pages = QStackedWidget()
         self.workbench_page = WorkbenchPage()
@@ -291,4 +314,3 @@ class MainWindow(QMainWindow):
                 return
             self.controller.cancel()
         event.accept()
-

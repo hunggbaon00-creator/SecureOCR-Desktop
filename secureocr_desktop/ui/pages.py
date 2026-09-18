@@ -53,6 +53,9 @@ class WorkbenchPage(QWidget):
         heading = QLabel("本地文档处理工作台")
         heading.setObjectName("pageTitle")
         root.addWidget(heading)
+        description = QLabel("选择文件和处理模式，任务将在本机独立工作区中运行。")
+        description.setObjectName("pageSubtitle")
+        root.addWidget(description)
 
         cards = QGridLayout()
         cards.setSpacing(10)
