@@ -1,0 +1,54 @@
+# Python virtual environments and caches
+.venv/
+.venv-*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build and packaging output
+build/
+dist/
+*.spec
+*.egg-info/
+
+# SecureOCR runtime data
+workspace/
+input/
+output/
+logs/
+models/
+downloads/
+*.log
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+config.local.*
+settings.local.*
+*.key
+*.pem
+*.pfx
+
+# OCR and document inputs/outputs
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+*.doc
+*.docx
+*.xls
+*.xlsx
+
+# IDE and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
