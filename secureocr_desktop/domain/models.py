@@ -15,7 +15,7 @@ class ProcessingMode(StrEnum):
         return {
             self.OCR: "仅 OCR",
             self.SUMMARY: "OCR 与内容总结",
-            self.SECURE_REVIEW: "敏感检查与脱敏",
+            self.SECURE_REVIEW: "OCR、敏感检查与脱敏",
         }[self]
 
     @property

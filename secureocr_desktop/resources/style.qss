@@ -211,25 +211,34 @@ QHeaderView::section {
     font-weight: 600;
 }
 
-QRadioButton {
-    background: transparent;
-    spacing: 8px;
-    padding: 7px 10px;
+QPushButton#modeButton {
+    background: #F8FAFD;
     color: #334E68;
+    border: 1px solid #CCD8E5;
+    border-radius: 9px;
+    padding: 12px 15px;
+    min-height: 24px;
+    text-align: left;
     font-weight: 600;
 }
 
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #9FB3C8;
-    background: white;
+QPushButton#modeButton:hover {
+    background: #F0F6FE;
+    color: #174E8C;
+    border-color: #8EB7E8;
 }
 
-QRadioButton::indicator:checked {
-    border: 5px solid #2F80ED;
-    background: white;
+QPushButton#modeButton:checked {
+    background: #E7F1FF;
+    color: #1258A5;
+    border: 2px solid #2F80ED;
+    padding: 11px 14px;
+    font-weight: 700;
+}
+
+QPushButton#modeButton:checked:hover {
+    background: #DFEDFF;
+    border-color: #1769E0;
 }
 
 QToolTip {

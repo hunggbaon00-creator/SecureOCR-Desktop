@@ -19,7 +19,6 @@ from PySide6.QtWidgets import (
     QPlainTextEdit,
     QProgressBar,
     QPushButton,
-    QRadioButton,
     QSplitter,
     QTableWidget,
     QTableWidgetItem,
@@ -103,13 +102,19 @@ class WorkbenchPage(QWidget):
         mode_row = QHBoxLayout()
         self.mode_group = QButtonGroup(self)
         for index, mode in enumerate(ProcessingMode):
-            button = QRadioButton(mode.display_name)
+            button = QPushButton(mode.display_name)
+            button.setObjectName("modeButton")
+            button.setCheckable(True)
             button.setProperty("mode", mode.value)
+            button.toggled.connect(
+                lambda checked, target=button, label=mode.display_name: target.setText(
+                    f"✓  {label}" if checked else label
+                )
+            )
             if index == 0:
                 button.setChecked(True)
             self.mode_group.addButton(button)
-            mode_row.addWidget(button)
-        mode_row.addStretch()
+            mode_row.addWidget(button, 1)
         mode_layout.addLayout(mode_row)
         root.addWidget(mode_frame)
 
